@@ -18,7 +18,7 @@ export function BookCard({ book, inCart }: BookCardProps) {
         <p class="price">${book.price.toFixed(2)}</p>
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <a href={routes.books.show.href({ slug: book.slug })} class="btn">
-            View Details :)
+            View Details
           </a>
 
           <CartButton inCart={inCart} id={book.id} slug={book.slug} />
