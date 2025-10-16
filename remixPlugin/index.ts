@@ -47,7 +47,7 @@ export default function remix(config: RemixConfig = {}): VonoPlugin {
 			},
 			configureServer(s) {
 				s.hot.on("frame-reload-error", (e) => {
-					consola.error("Error reloading root frame in browser.", e.message)
+					consola.warn("Error reloading root frame in browser, refreshing...")
 				})
 			},
 			async configResolved(cfg) {
