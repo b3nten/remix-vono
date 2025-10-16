@@ -50,6 +50,9 @@ importers:
       canvas-confetti:
         specifier: ^1.9.3
         version: 1.9.3
+      consola:
+        specifier: ^3.4.2
+        version: 3.4.2
       nitro:
         specifier: 3.0.1-alpha.0
         version: 3.0.1-alpha.0(chokidar@4.0.3)(rolldown-vite@7.1.14(@types/node@24.7.2)(esbuild@0.25.11)(jiti@2.6.1))

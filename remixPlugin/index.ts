@@ -7,6 +7,7 @@ import traverse from '@babel/traverse';
 import generate from '@babel/generator';
 import * as t from '@babel/types';
 import {remixRuntimeDirectory} from "./runtimes";
+import consola from "consola";
 
 interface RemixConfig {
 	clientMain?: string
@@ -21,10 +22,10 @@ export default function remix(config: RemixConfig = {}): VonoPlugin {
 		serverMain(config.serverMain ?? "src/serverMain")
 
 		runtimes(r => {
-			r.client.dev = path.join(remixRuntimeDirectory, "clientDev")
-			r.client.prod = path.join(remixRuntimeDirectory, "clientProd")
-			r.server.dev = path.join(remixRuntimeDirectory, "server")
-			r.server.prod = path.join(remixRuntimeDirectory, "server")
+			r.client.dev = path.join(remixRuntimeDirectory, "dev/client")
+			r.client.prod = path.join(remixRuntimeDirectory, "prod/client")
+			r.server.dev = path.join(remixRuntimeDirectory, "dev/server")
+			r.server.prod = path.join(remixRuntimeDirectory, "prod/server")
 		})
 
 		const islands: Record<string, string> = {}
@@ -42,6 +43,11 @@ export default function remix(config: RemixConfig = {}): VonoPlugin {
 					type: 'full-reload',
 					path: '*',
 					triggeredBy:  ctx.file
+				})
+			},
+			configureServer(s) {
+				s.hot.on("frame-reload-error", (e) => {
+					consola.error("Error reloading root frame in browser.", e.message)
 				})
 			},
 			async configResolved(cfg) {

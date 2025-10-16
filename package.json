@@ -21,6 +21,7 @@
     "@types/node": "^24.7.2",
     "@vonojs/framework": "latest",
     "canvas-confetti": "^1.9.3",
+    "consola": "^3.4.2",
     "nitro": "3.0.1-alpha.0",
     "typescript": "^5.9.3",
     "wrangler": "^4.20.0"
