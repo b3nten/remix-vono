@@ -1,7 +1,7 @@
 // @ts-nocheck
 import confetti from "canvas-confetti"
 
-export function yay() {
+export function launchConfetti() {
 	const count = 400;
 	const defaults = {
 		origin: { y: 0.7 }

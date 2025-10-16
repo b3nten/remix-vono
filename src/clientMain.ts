@@ -1,8 +1,8 @@
 import "./assets/styles.css"
-import { yay } from "./utils/confetti.ts";
+import { launchConfetti } from "./utils/confetti.ts";
 
 const hasVisited = sessionStorage.getItem("hasVisited");
 if (!hasVisited) {
-	yay();
+	launchConfetti();
 	sessionStorage.setItem("hasVisited", "true");
 }
