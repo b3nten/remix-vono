@@ -10,7 +10,7 @@ const resolveFrame = async (frameUrl: string) => {
 	throw new Error(`Failed to fetch ${frameUrl}`)
 }
 
-createFrame(document, {
+createFrame(document.body, {
 	async loadModule(moduleUrl, name) {
 		const importer = islands[moduleUrl]
 		if(!importer) throw new Error(
