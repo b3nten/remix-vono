@@ -11,7 +11,6 @@ async function resolveFrame(frameUrl: string) {
 	})
 	if (res.ok) {
 		const text = await res.text()
-		console.log(text)
 		return text
 	}
 	throw new Error(`Failed to fetch ${frameUrl}`)
