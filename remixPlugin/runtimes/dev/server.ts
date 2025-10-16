@@ -11,15 +11,44 @@ export default {
 			) {
 				const originalHtml = await response.text()
 				const html = originalHtml.match(/<body>(.*?)<\/body>/s)?.[1] || ''
-				return new Response(html, {
-					headers: {
-						'Content-Type': 'text/html',
-					},
-					status: 200,
+				return cloneResponse(response, {
+					body: html,
+					headers: {},
 				})
 			}
 			return response
 		}
-		return mod.fetch(req)
+
+		const response = await mod.fetch(req)
+
+		if (
+			response &&
+			response.status !== 404 &&
+			(response.headers.get('Content-Type') ?? "").startsWith('text/html')
+		) {
+			const originalHtml = await response.text()
+			const html = originalHtml.replace("<head>", "<head><style data-occluder>body { opacity: 0 }</style>")
+			return cloneResponse(response, {
+				body: html,
+				headers: {},
+			})
+		}
+
+		return response;
 	}
+}
+
+async function cloneResponse(response: Response, args: {
+	body: string,
+	headers: Record<string, string>,
+}) {
+	const headers = new Headers(response.headers)
+	for (const [key, value] of Object.entries(args.headers)) {
+		headers.set(key, value)
+	}
+	return new Response(args.body, {
+		status: response.status,
+		statusText: response.statusText,
+		headers: headers,
+	})
 }

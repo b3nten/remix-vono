@@ -45,3 +45,5 @@ if (import.meta.hot) {
 		payload.path = 'prevent-full-reload.html'
 	})
 }
+
+document.head.querySelector("[data-occluder]")?.remove()
