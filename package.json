@@ -1,0 +1,33 @@
+{
+  "name": "vono",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vono dev",
+    "build": "vono build"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/generator": "^7.28.3",
+    "@babel/parser": "^7.28.4",
+    "@babel/traverse": "^7.28.4",
+    "@babel/types": "^7.28.4",
+    "@remix-run/dom": "0.0.0-experimental-remix-jam.6",
+    "@remix-run/events": "0.0.0-experimental-remix-jam.5",
+    "@remix-run/fetch-router": "^0.6.0",
+    "@remix-run/file-storage": "^0.9.0",
+    "@remix-run/headers": "^0.13.0",
+    "@remix-run/lazy-file": "^3.5.0",
+    "@types/node": "^24.7.2",
+    "@vonojs/framework": "0.0.24",
+    "canvas-confetti": "^1.9.3",
+    "nitro": "3.0.1-alpha.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.20.0"
+  },
+  "devDependencies": {
+    "@types/babel__generator": "^7.27.0",
+    "@types/babel__traverse": "^7.28.0",
+    "magicast": "^0.3.5"
+  }
+}
